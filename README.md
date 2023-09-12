@@ -27,6 +27,17 @@ Note the reward function is only applicable to AWS DeepRacer Invent:2018 track, 
 
 # Tips
 
+1. validate if your reward function is working by analysing logs
+
+2. Modify Speed to get a smooth U-turn
+- modify the planned speed
+- assign more reward to waypoints before sharp U-turn
+
+3. Heavy penalty for steering angle at highspeed while less penalty for low speed
+The logic is that low speed usually is to prepare for a sharp turn, so the steering angle may be larger than expected
+
+4. Train by shorter time and observe if it is progressing
+
 
 # Acknowledgement
 
