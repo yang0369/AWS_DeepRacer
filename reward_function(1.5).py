@@ -268,11 +268,11 @@ class Reward:
             [2.92074, 0.70874, 4.0, 0.03621]]
 
         # planned speed based on waypoints
-        above_three_five = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 93, 94, 95, 114, 115, 116, 117, 118]
-        above_three = [17, 41, 71, 91, 92, 96, 97, 112, 113]
-        above_two_five = [18, 40, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 74, 88, 89, 90, 98, 99, 110, 111]
-        above_two = [19, 20, 38, 39, 75, 76, 86, 87, 100, 101, 108, 109]
-        below_two = [i for i in range(0, 119) if i not in above_three_five + above_three + above_two_five + above_two]
+        # manually lower some speed before sharp turning
+        above_three_five = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 93, 94, 95, 114, 115, 116, 117, 118]
+        above_three = [41, 71, 91, 92, 96, 97, 112, 113]
+        above_two_five = [40, 63, 64, 65, 66, 67, 68, 69, 70, 72, 73, 74, 88, 89, 90, 98, 99, 110, 111]
+        above_two = [14, 15, 16, 38, 39, 75, 76, 86, 87, 100, 101, 108, 109]
 
         # planned speed based on waypoints
         # observe which side the car is expected to run at
@@ -281,7 +281,7 @@ class Reward:
         left_track = [i for i in range(0, 119) if i not in right_track + center_track]
 
         # obvious sides
-        strong_left = [17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+        strong_left = [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
         strong_right = [52, 53, 54, 55, 56]
 
         ################## INPUT PARAMETERS ###################
@@ -366,12 +366,12 @@ class Reward:
         elif closest_index in above_three:
             if speed >= 3:
                 reward += get_speed_reward(0.5, SPEED_DIFF_NO_REWARD, speed_diff)
-            if steering_angle > 4.5:
+            if steering_angle > 5:
                 reward *= PENALTY_RATIO
         elif closest_index in above_two_five:
             if speed >= 2.5:
                 reward += get_speed_reward(0.8, SPEED_DIFF_NO_REWARD, speed_diff)
-            if steering_angle > 6.5:
+            if steering_angle > 10:
                 reward *= PENALTY_RATIO
         elif closest_index in above_two:
             if speed >= 2:
