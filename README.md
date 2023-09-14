@@ -3,6 +3,8 @@
 ## Showcase
 ![demo](video.gif)
 
+Video: https://youtu.be/LBDBRirO5Wg
+
 ## DeepRacer
 AWS DeepRacer is an innovative and exciting offering from Amazon Web Services (AWS) that combines the world of artificial intelligence and autonomous driving in a captivating and educational way. It is designed to provide developers, students, and enthusiasts with a hands-on experience in reinforcement learning, a powerful machine learning technique. With AWS DeepRacer, individuals can train and fine-tune autonomous racing cars using reinforcement learning algorithms and then compete in virtual or physical racing events.
 
@@ -27,7 +29,7 @@ To efficiently run the Python scripts, it is recommended to set up a separate en
 For users less familiar with technical details, you can effortlessly install all the necessary dependencies by executing the following command:
 `pip install -r requirement.txt`
 
-Please note that the reward function has been specifically tailored for the AWS DeepRacer Invent:2018 track. If you wish to customize it for other tracks or make modifications, you can follow the detailed sharing by [link].
+Please note that the reward function has been specifically tailored for the AWS DeepRacer Invent:2018 track. If you wish to customize it for other tracks or make modifications, you can follow the detailed sharing by https://medium.com/@yangkewenvigorous/2e5db6ceab63.
 ## Calculate Optimized Route
 
 The core of this approach hinges on the calculation of an optimized route, which draws inspiration from this repository: [Link to Repositor](https://github.com/dgnzlz/Capstone_AWS_DeepRacer), but has been tailored with some key modifications.
