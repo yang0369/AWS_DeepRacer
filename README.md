@@ -1,7 +1,7 @@
 # Enhancing Your AWS DeepRacer Performance with Gradient Descent Algorithm and Personalized Waypoints
 
 ## Showcase
-<video src="./RaceVideo.mp4" width="640" height="480" controls></video>
+![Alt Text]("./video.gif")
 
 ## DeepRacer
 AWS DeepRacer is an innovative and exciting offering from Amazon Web Services (AWS) that combines the world of artificial intelligence and autonomous driving in a captivating and educational way. It is designed to provide developers, students, and enthusiasts with a hands-on experience in reinforcement learning, a powerful machine learning technique. With AWS DeepRacer, individuals can train and fine-tune autonomous racing cars using reinforcement learning algorithms and then compete in virtual or physical racing events.
