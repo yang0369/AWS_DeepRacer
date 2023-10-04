@@ -111,38 +111,6 @@ class Reward:
 
             return direction_diff
 
-        # Gives back indexes that lie between start and end index of a cyclical list
-        # (start index is included, end index is not)
-        def indexes_cyclical(start, end, array_len):
-
-            if end < start:
-                end += array_len
-
-            return [index % array_len for index in range(start, end)]
-
-        # Calculate how long car would take for entire lap, if it continued like it did until now
-        def projected_time(first_index, closest_index, step_count, times_list):
-
-            # Calculate how much time has passed since start
-            current_actual_time = (step_count-1) / 15
-
-            # Calculate which indexes were already passed
-            indexes_traveled = indexes_cyclical(first_index, closest_index, len(times_list))
-
-            # Calculate how much time should have passed if car would have followed optimals
-            current_expected_time = sum([times_list[i] for i in indexes_traveled])
-
-            # Calculate how long one entire lap takes if car follows optimals
-            total_expected_time = sum(times_list)
-
-            # Calculate how long car would take for entire lap, if it continued like it did until now
-            try:
-                projected_time = (current_actual_time/current_expected_time) * total_expected_time
-            except:
-                projected_time = 9999
-
-            return projected_time
-
         #################### RACING LINE ######################
 
         # Optimal racing line for the Spain track
@@ -379,21 +347,6 @@ class Reward:
         else:
             if speed < 2:
                 reward += get_speed_reward(3, SPEED_DIFF_NO_REWARD, speed_diff)
-
-        # # Reward if less steps
-        # STANDARD_TIME = 11  # seconds (time that is easily done by model)
-        # FASTEST_TIME = 8  # seconds (best time of 1st place on the track)
-        # REWARD_PER_STEP_FOR_FASTEST_TIME = 1
-        # times_list = [row[3] for row in racing_track]
-        # projected_time = projected_time(self.first_racingpoint_index, closest_index, steps, times_list)
-        # try:
-        #     steps_prediction = projected_time * 15 + 1
-        #     reward_prediction = max(1e-3, (-REWARD_PER_STEP_FOR_FASTEST_TIME*(FASTEST_TIME) /
-        #                                    (STANDARD_TIME-FASTEST_TIME))*(steps_prediction-(STANDARD_TIME*15+1)))
-        #     steps_reward = min(REWARD_PER_STEP_FOR_FASTEST_TIME, reward_prediction / steps_prediction)
-        # except:
-        #     steps_reward = 0
-        # reward += steps_reward
 
         # Incentive for finishing the lap in less steps ##
         REWARD_FOR_FASTEST_TIME = 2000 # should be adapted to track length and other rewards
